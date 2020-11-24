@@ -12,13 +12,28 @@
     <hr>
 
     @foreach ($tweets as $tweet)
-        {{ $tweet->user->name }} - {{ $tweet->content }}
+        <div class="flex">
+            <div class="w-2/8">
+                @if ($tweet->user->photo)
+                    <img src="{{ url('storage/' . $tweet->user->photo) }}" alt="" class="rounded-full h-8 w-8" title="{{ $tweet->user->name }}">
+                @else
+                    <img src="{{ url('imgs/no-image.png') }}" alt="" class="rounded-full h-8 w-8">
+                @endif
 
-        @if ($tweet->likes->count())
-            [ <a href="#" wire:click.prevent="unlike({{ $tweet }})">descurtir</a> ]
-        @else
-            [ <a href="#" wire:click.prevent="like({{ $tweet->id }})">curtir</a> ]
-        @endif
+                {{ $tweet->user->name }}
+            </div>
+
+            <div class="w-6/8">
+                {{ $tweet->content }}
+
+                @if ($tweet->likes->count())
+                    [ <a href="#" wire:click.prevent="unlike({{ $tweet }})">descurtir</a> ]
+                @else
+                    [ <a href="#" wire:click.prevent="like({{ $tweet->id }})">curtir</a> ]
+                @endif
+            </div>
+        </div>
+
         <br>
     @endforeach
 

@@ -8,17 +8,29 @@ Steps
 
 1. Install composer packages
 
+> composer install
+
 2. Create MySQL database named livewire_tweets
 
 3. Configure .env file
 
 4. Run migrations
 
-5. Generate Laravel key: php artisan key:generate
+> php artisan migrate
 
-6. Run project with artisan server
+5. Generate Laravel key
+    
+> php artisan key:generate
 
-7. Register your user on /register page
+6. Create public storage link
+
+> php artisan storage:link
+
+7. Run project with artisan server
+
+> php artisan serve
+
+8. Register your user on /register page
 
 
 ----
